@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import ThemeToggle from './components/ThemeToggle';
 
 export default function Calculator() {
   const [display, setDisplay] = useState('0');
@@ -88,12 +89,12 @@ export default function Calculator() {
     children: React.ReactNode;
     variant?: 'number' | 'operator' | 'function';
   }) => {
-    const baseClasses = "h-16 rounded-full font-medium text-xl transition-all duration-150 active:scale-95 hover:brightness-110";
+    const baseClasses = "h-16 rounded-full font-medium text-xl transition-all duration-200 active:scale-95 hover:brightness-110";
     
     const variantClasses = {
-      number: "bg-gray-600 text-white hover:bg-gray-500",
+      number: "bg-gray-300 dark:bg-gray-600 text-black dark:text-white hover:bg-gray-400 dark:hover:bg-gray-500",
       operator: "bg-orange-500 text-white hover:bg-orange-400",
-      function: "bg-gray-400 text-black hover:bg-gray-300"
+      function: "bg-gray-200 dark:bg-gray-400 text-black hover:bg-gray-300 dark:hover:bg-gray-300"
     };
 
     return (
@@ -107,11 +108,12 @@ export default function Calculator() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
-      <div className="bg-black rounded-3xl p-6 shadow-2xl border border-gray-800">
+    <div className="min-h-screen bg-gray-100 dark:bg-black flex items-center justify-center p-4 relative transition-colors duration-300">
+      <ThemeToggle />
+      <div className="bg-white dark:bg-black rounded-3xl p-6 shadow-2xl border border-gray-300 dark:border-gray-800 transition-colors duration-300">
         {/* Display */}
-        <div className="bg-black rounded-2xl p-6 mb-4">
-          <div className="text-right text-white text-5xl font-light min-h-[60px] flex items-end justify-end overflow-hidden">
+        <div className="bg-gray-50 dark:bg-black rounded-2xl p-6 mb-4 transition-colors duration-300">
+          <div className="text-right text-black dark:text-white text-5xl font-light min-h-[60px] flex items-end justify-end overflow-hidden transition-colors duration-300">
             {display}
           </div>
         </div>
@@ -189,4 +191,12 @@ export default function Calculator() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
 
